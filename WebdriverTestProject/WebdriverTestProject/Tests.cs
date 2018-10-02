@@ -31,13 +31,9 @@ namespace WebdriverTestProject
         [Test]
         public void FirstTest()
         {
-            //driver.Navigate().GoToUrl("https://www.google.com/");
+            WebDriver.Driver.Navigate().GoToUrl("https://www.google.com/");
 
-            //Assert.AreEqual("SW Test Academy - Software Test Academy", driver.Title);
-
-            //driver.Close();
-
-            //driver.Quit();
+            Assert.AreEqual("SW Test Academy - Software Test Academy", WebDriver.Driver.Title);
         }
     }
 }
