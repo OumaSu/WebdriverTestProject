@@ -1,0 +1,17 @@
+C:\Users\Grigory\Documents\Visual Studio 2017\Projects\WebdriverTestProject\WebdriverTestProject\bin\Debug\NUnit3.TestAdapter.dll
+C:\Users\Grigory\Documents\Visual Studio 2017\Projects\WebdriverTestProject\WebdriverTestProject\bin\Debug\NUnit3.TestAdapter.pdb
+C:\Users\Grigory\Documents\Visual Studio 2017\Projects\WebdriverTestProject\WebdriverTestProject\bin\Debug\nunit.engine.dll
+C:\Users\Grigory\Documents\Visual Studio 2017\Projects\WebdriverTestProject\WebdriverTestProject\bin\Debug\nunit.engine.api.dll
+C:\Users\Grigory\Documents\Visual Studio 2017\Projects\WebdriverTestProject\WebdriverTestProject\bin\Debug\Mono.Cecil.dll
+C:\Users\Grigory\Documents\Visual Studio 2017\Projects\WebdriverTestProject\WebdriverTestProject\bin\Debug\WebdriverTestProject.dll
+C:\Users\Grigory\Documents\Visual Studio 2017\Projects\WebdriverTestProject\WebdriverTestProject\bin\Debug\WebdriverTestProject.pdb
+C:\Users\Grigory\Documents\Visual Studio 2017\Projects\WebdriverTestProject\WebdriverTestProject\bin\Debug\nunit.framework.dll
+C:\Users\Grigory\Documents\Visual Studio 2017\Projects\WebdriverTestProject\WebdriverTestProject\bin\Debug\WebDriver.dll
+C:\Users\Grigory\Documents\Visual Studio 2017\Projects\WebdriverTestProject\WebdriverTestProject\bin\Debug\nunit.framework.pdb
+C:\Users\Grigory\Documents\Visual Studio 2017\Projects\WebdriverTestProject\WebdriverTestProject\bin\Debug\nunit.framework.xml
+C:\Users\Grigory\Documents\Visual Studio 2017\Projects\WebdriverTestProject\WebdriverTestProject\bin\Debug\WebDriver.xml
+C:\Users\Grigory\Documents\Visual Studio 2017\Projects\WebdriverTestProject\WebdriverTestProject\obj\Debug\WebdriverTestProject.csprojAssemblyReference.cache
+C:\Users\Grigory\Documents\Visual Studio 2017\Projects\WebdriverTestProject\WebdriverTestProject\obj\Debug\WebdriverTestProject.csproj.CoreCompileInputs.cache
+C:\Users\Grigory\Documents\Visual Studio 2017\Projects\WebdriverTestProject\WebdriverTestProject\obj\Debug\WebdriverTestProject.csproj.CopyComplete
+C:\Users\Grigory\Documents\Visual Studio 2017\Projects\WebdriverTestProject\WebdriverTestProject\obj\Debug\WebdriverTestProject.dll
+C:\Users\Grigory\Documents\Visual Studio 2017\Projects\WebdriverTestProject\WebdriverTestProject\obj\Debug\WebdriverTestProject.pdb
