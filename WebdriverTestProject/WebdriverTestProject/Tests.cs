@@ -1,14 +1,11 @@
 ﻿using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 
 namespace WebdriverTestProject
 {
     public class Tests
     {
-
-
         [SetUp]
         public void SetUp()
         {
@@ -17,10 +14,11 @@ namespace WebdriverTestProject
         [TearDown]
         public void TearDown()
         {
-            bool passed = TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Passed;
+            var passed = TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Passed;
             try
             {
-                ((IJavaScriptExecutor)WebDriver.Driver).ExecuteScript("tb:test-result=" + (passed ? "passed" : "failed"));
+                ((IJavaScriptExecutor) WebDriver.Driver).ExecuteScript(
+                    "tb:test-result=" + (passed ? "passed" : "failed"));
             }
             finally
             {

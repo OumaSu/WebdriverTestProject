@@ -53,7 +53,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\HtmlControl.cs" />
+    <Compile Include="Controls\StaticControl.cs" />
     <Compile Include="Controls\WebElementWrapper.cs" />
+    <Compile Include="Helpers\Waiter.cs" />
     <Compile Include="WebDriver.cs" />
     <Compile Include="Pages\PageBase.cs" />
     <Compile Include="Tests.cs" />

@@ -4,20 +4,16 @@ using System.Linq;
 using System.Threading;
 using NUnit.Framework;
 using OpenQA.Selenium;
+using WebdriverTestProject.Helpers;
 
 namespace WebdriverTestProject.Controls
 {
-    public delegate TValue FuncParams<TValue, in TArgs>(TValue s, params TArgs[] p);
-
     public abstract class HtmlControl
     {
         private readonly string controlDescription;
         public readonly WebElementWrapper element;
         private readonly By locator;
         private readonly ISearchContext searchContext;
-
-        public Func<string, string, bool> @equals = (x, y) => string.Equals(x, y);
-        public FuncParams<string, object> format = (s, p) => string.Format(s, p);
 
         protected HtmlControl(By locator, HtmlControl container = null)
         {
@@ -34,6 +30,7 @@ namespace WebdriverTestProject.Controls
         {
         }
 
+
         public virtual bool IsEnabled => !HasClass("disabled");
 
         public bool IsPresent => searchContext.FindElements(locator).Count > 0;
@@ -42,13 +39,30 @@ namespace WebdriverTestProject.Controls
 
         public bool IsEmpty => GetText() == string.Empty;
 
-        public void WaitVisible() => Assert.IsTrue(IsVisible, FormatWithLocator("Ожидание видимости элемента"));
+        private string FormatControlDescription(string locatorString, HtmlControl container)
+        {
+            var str = $"{GetType().Name} ({locatorString})";
+            if (container == null)
+                return str;
+            return $"{str} в контексте элемента {container.controlDescription}";
+        }
+
+        public bool HasClass(string className)
+        {
+            return HasClass(className, out var actualClasses);
+        }
+
+        public void WaitVisible()
+        {
+            Assert.IsTrue(IsVisible, FormatWithLocator("Ожидание видимости элемента"));
+        }
 
         public void WaitEmptyWithRetries(int? timeout = null)
         {
             var actionDescription = FormatWithLocator("Ожидание отсутствия текста");
             Waiter.Wait(() => IsEmpty, actionDescription, timeout);
         }
+
         public void WaitVisibleWithRetries(int? timeout = null)
         {
             Waiter.Wait(() => IsVisible, FormatWithLocator("Ожидание видимости элемента"), timeout);
@@ -141,46 +155,28 @@ namespace WebdriverTestProject.Controls
         public void WaitClassPresence(string className)
         {
             var str = FormatWithLocator($"Ожидание класса '{className}' у элемента");
-            string actualClasses;
-            Assert.IsTrue(HasClass(className, out actualClasses),
+            Assert.IsTrue(HasClass(className, out var actualClasses),
                 $"{str}, актуальный класс: '{actualClasses}'");
-        }
-
-        public void WaitClassPresenceWithRetries(string className, int? timeout = null)
-        {
-            var actionDescription =
-                FormatWithLocator($"Ожидание появления класса '{className}' у элемента");
-            Waiter.Wait(() => HasClass(className), actionDescription, timeout);
         }
 
         public void WaitClassAbsence(string className)
         {
             var str = FormatWithLocator($"Ожидание отсутствия класса '{className}' у элемента");
-            string actualClasses;
-            Assert.IsFalse(HasClass(className, out actualClasses),
+            Assert.IsFalse(HasClass(className, out var actualClasses),
                 $"{str}, актуальный класс: '{actualClasses}'");
-        }
-
-        public void WaitClassAbsenceWithRetries(string className, int? timeout = null)
-        {
-            var actionDescription =
-                FormatWithLocator(string.Format("Ожидание отсутствия класса '{0}' у элемента", className));
-            Waiter.Wait(() => !HasClass(className), actionDescription, timeout);
         }
 
         public void WaitAttributeValue(string attributeName, string expectedText)
         {
             var message =
-                FormatWithLocator(string.Format("Ожидание атрибута '{0}' со значением '{1}' в элементе", attributeName,
-                    expectedText));
+                FormatWithLocator($"Ожидание атрибута '{attributeName}' со значением '{expectedText}' в элементе");
             Assert.AreEqual(expectedText, GetAttributeValue(attributeName), message);
         }
 
         public void WaitAttributeValueWithRetries(string attributeName, string expectedText, int? timeout = null)
         {
             var actionDescription =
-                FormatWithLocator(string.Format("Ожидание атрибута '{0}' со значением '{1}' в элементе", attributeName,
-                    expectedText));
+                FormatWithLocator($"Ожидание атрибута '{attributeName}' со значением '{expectedText}' в элементе");
             Waiter.Wait(() => expectedText == GetAttributeValue(attributeName), actionDescription,
                 timeout);
         }
@@ -263,22 +259,19 @@ namespace WebdriverTestProject.Controls
 
         public void ClearBlock(string elementId)
         {
-            WebDriver.ExecuteScript(string.Format("$('#{0}').html('');", elementId));
+            WebDriver.ExecuteScript($"$('#{elementId}').html('');");
         }
 
         protected string FormatWithLocator(string text)
         {
-            return string.Format("{0} '{1}'", text, controlDescription);
+            return $"{text} '{controlDescription}'";
         }
 
         public string GetParameterValue(string value)
         {
-            return WebDriver.ExecuteScript(value.Split(new[]
-            {
-                '.'
-            })
+            return WebDriver.ExecuteScript(value.Split('.')
                 .Aggregate($"return Configs['{GetAttributeValue("id")}']",
-                    (current, part) => current + $"['{part}']"), new object[0]) as string;
+                    (current, part) => current + $"['{part}']")) as string;
         }
 
         private bool HasClass(string className, out string actualClasses)
@@ -297,7 +290,7 @@ namespace WebdriverTestProject.Controls
                 "\r",
                 "\n",
                 "\t"
-            }, StringSplitOptions.RemoveEmptyEntries).All((new List<string>(strArray)).Contains<string>);
+            }, StringSplitOptions.RemoveEmptyEntries).All(new List<string>(strArray).Contains<string>);
         }
 
         public void SendKeys(string keys)
@@ -347,6 +340,7 @@ namespace WebdriverTestProject.Controls
                 errorText = errorImage.GetAttributeValue("title");
                 return false;
             }
+
             return true;
         }
     }

@@ -8,18 +8,42 @@ namespace WebdriverTestProject
     {
         public static readonly IWebDriver Driver;
 
-        static WebDriver() => Driver = new ChromeDriver();
+        static WebDriver()
+        {
+            Driver = new ChromeDriver();
+        }
 
-        public static void MaximizeWindow() => Driver.Manage().Window.Maximize();
+        public static void MaximizeWindow()
+        {
+            Driver.Manage().Window.Maximize();
+        }
 
-        public static void NavigateToUrl(string url) => Driver.Navigate().GoToUrl(url);
+        public static void NavigateToUrl(string url)
+        {
+            Driver.Navigate().GoToUrl(url);
+        }
 
-        public static object ExecuteScript(string script, params object[] args) => ((IJavaScriptExecutor)Driver).ExecuteScript(script, args);
+        public static object ExecuteScript(string script, params object[] args)
+        {
+            return ((IJavaScriptExecutor) Driver).ExecuteScript(script, args);
+        }
 
 
-        public static void Refresh() => Driver.Navigate().Refresh();
+        public static void Refresh()
+        {
+            Driver.Navigate().Refresh();
+        }
 
-        public static void Back() => Driver.Navigate().Back();
+        public static ISearchContext GetSearchContext()
+        {
+            return Driver;
+        }
+
+
+        public static void Back()
+        {
+            Driver.Navigate().Back();
+        }
 
         public static void Quit()
         {
@@ -46,6 +70,5 @@ namespace WebdriverTestProject
                 Console.WriteLine("Ошибка при остановке Driver:\r\n{0}", ex);
             }
         }
-
     }
 }

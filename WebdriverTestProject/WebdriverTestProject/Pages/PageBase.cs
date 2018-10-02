@@ -7,10 +7,6 @@ namespace WebdriverTestProject.Pages
     {
         private readonly object alive = new object();
 
-        static PageBase()
-        {
-        }
-
 
         public static TimeSpan WaitPageLoadTimeout => TimeSpan.FromSeconds(60.0);
 
@@ -37,7 +33,10 @@ namespace WebdriverTestProject.Pages
             return local0;
         }
 
-        public string GetCurrentUrl() => WebDriver.Driver.Url;
+        public string GetCurrentUrl()
+        {
+            return WebDriver.Driver.Url;
+        }
 
         public static TPage RefreshPage<TPage>() where TPage : PageBase, new()
         {
@@ -47,6 +46,7 @@ namespace WebdriverTestProject.Pages
             InitPage();
             return page;
         }
+
         private static void InitPage()
         {
             try
@@ -79,7 +79,10 @@ namespace WebdriverTestProject.Pages
             return true;
         }
 
-        public IWebElement GetElementById(string idElement) => WebDriver.Driver.FindElement(By.Id(idElement));
+        public IWebElement GetElementById(string idElement)
+        {
+            return WebDriver.Driver.FindElement(By.Id(idElement));
+        }
 
         public static void GetAlertMessageAndAccept()
         {

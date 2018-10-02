@@ -34,140 +34,205 @@ namespace WebdriverTestProject.Controls
 
         public bool Displayed => Execute(() => FindNativeWebElement().Displayed);
 
-        public IWebElement FindElement(By by) => throw new NotSupportedException();
-
-        public ReadOnlyCollection<IWebElement> FindElements(By by) => Execute(() => FindNativeWebElement()
-            .FindElements(by));
-
-        public void Clear() => Execute(() =>
+        public IWebElement FindElement(By by)
         {
-            FindNativeWebElement().Clear();
-            return 0;
-        });
+            throw new NotSupportedException();
+        }
 
-        public void SendKeys(string text) => Execute(() =>
+        public ReadOnlyCollection<IWebElement> FindElements(By by)
         {
-            FindNativeWebElement().SendKeys(text);
-            return 0;
-        });
+            return Execute(() => FindNativeWebElement()
+                .FindElements(by));
+        }
 
-        public void Submit() => Execute(() =>
+        public void Clear()
         {
-            FindNativeWebElement().Submit();
-            return 0;
-        });
+            Execute(() =>
+            {
+                FindNativeWebElement().Clear();
+                return 0;
+            });
+        }
+
+        public void SendKeys(string text)
+        {
+            Execute(() =>
+            {
+                FindNativeWebElement().SendKeys(text);
+                return 0;
+            });
+        }
+
+        public void Submit()
+        {
+            Execute(() =>
+            {
+                FindNativeWebElement().Submit();
+                return 0;
+            });
+        }
 
         public void Click()
         {
             var element = FindNativeWebElement();
 
-                if (WebDriver.Driver != null)
-                {
-                    var actions = new Actions(WebDriver.Driver);
-                    actions.MoveToElement(element).Click().Perform();
-                }
+            if (WebDriver.Driver != null)
+            {
+                var actions = new Actions(WebDriver.Driver);
+                actions.MoveToElement(element).Click().Perform();
+            }
         }
 
-        public string GetAttribute(string attributeName) => Execute(() => FindNativeWebElement()
-            .GetAttribute(attributeName));
-
-        public string GetProperty(string propertyName) => Execute(
-            () => FindNativeWebElement().GetProperty(propertyName));
-
-        public string GetCssValue(string propertyName) => Execute(
-            () => FindNativeWebElement().GetCssValue(propertyName));
-
-        public void DoubleClick() => Execute(() =>
+        public string GetAttribute(string attributeName)
         {
-            var element = FindNativeWebElement();
-            if (WebDriver.Driver != null)
+            return Execute(() => FindNativeWebElement()
+                .GetAttribute(attributeName));
+        }
+
+        public string GetProperty(string propertyName)
+        {
+            return Execute(
+                () => FindNativeWebElement().GetProperty(propertyName));
+        }
+
+        public string GetCssValue(string propertyName)
+        {
+            return Execute(
+                () => FindNativeWebElement().GetCssValue(propertyName));
+        }
+
+        public void DoubleClick()
+        {
+            Execute(() =>
             {
-                var action = new Actions(WebDriver.Driver);
-                action.MoveToElement(element).DoubleClick().Perform();
-            }
-            return 0;
-        });
+                var element = FindNativeWebElement();
+                if (WebDriver.Driver != null)
+                {
+                    var action = new Actions(WebDriver.Driver);
+                    action.MoveToElement(element).DoubleClick().Perform();
+                }
 
-        public void ContextClick() => Execute(() =>
+                return 0;
+            });
+        }
+
+        public void ContextClick()
         {
-            var element = FindNativeWebElement();
-            if (WebDriver.Driver != null)
+            Execute(() =>
             {
-                var action = new Actions(WebDriver.Driver);
-                action.MoveToElement(element).ContextClick().Perform();
-            }
-            return 0;
-        });
+                var element = FindNativeWebElement();
+                if (WebDriver.Driver != null)
+                {
+                    var action = new Actions(WebDriver.Driver);
+                    action.MoveToElement(element).ContextClick().Perform();
+                }
 
-        public void DragAndDrop(WebElementWrapper target) => Execute(() =>
+                return 0;
+            });
+        }
+
+        public void DragAndDrop(WebElementWrapper target)
         {
-            var sourceElement = FindNativeWebElement();
-            var targetElement = target.FindNativeWebElementInternal();
-            if (WebDriver.Driver != null)
+            Execute(() =>
             {
-                var action = new Actions(WebDriver.Driver);
-                action.MoveToElement(sourceElement).DragAndDrop(sourceElement, targetElement).Perform();
-            }
-            return 0;
-        });
+                var sourceElement = FindNativeWebElement();
+                var targetElement = target.FindNativeWebElementInternal();
+                if (WebDriver.Driver != null)
+                {
+                    var action = new Actions(WebDriver.Driver);
+                    action.MoveToElement(sourceElement).DragAndDrop(sourceElement, targetElement).Perform();
+                }
 
-        public void KeysDown(string text) => Execute(() =>
+                return 0;
+            });
+        }
+
+        public void KeysDown(string text)
         {
-            var element = FindNativeWebElement();
-            if (WebDriver.Driver != null)
+            Execute(() =>
             {
-                var action = new Actions(WebDriver.Driver);
-                action.MoveToElement(element).KeyDown(text).Perform();
-            }
-            return 0;
-        });
+                var element = FindNativeWebElement();
+                if (WebDriver.Driver != null)
+                {
+                    var action = new Actions(WebDriver.Driver);
+                    action.MoveToElement(element).KeyDown(text).Perform();
+                }
 
-        public void KeysUp(string text) => Execute(() =>
+                return 0;
+            });
+        }
+
+        public void KeysUp(string text)
         {
-            var element = FindNativeWebElement();
-            if (WebDriver.Driver != null)
+            Execute(() =>
             {
-                var action = new Actions(WebDriver.Driver);
-                action.MoveToElement(element).KeyUp(text).Perform();
-            }
-            return 0;
-        });
+                var element = FindNativeWebElement();
+                if (WebDriver.Driver != null)
+                {
+                    var action = new Actions(WebDriver.Driver);
+                    action.MoveToElement(element).KeyUp(text).Perform();
+                }
 
-        public void ClickViaJavascript() => Execute(() =>
+                return 0;
+            });
+        }
+
+        public void ClickViaJavascript()
         {
-            WebDriver.ExecuteScript("arguments[0].click();", FindNativeWebElement());
-            return 0;
-        });
+            Execute(() =>
+            {
+                WebDriver.ExecuteScript("arguments[0].click();", FindNativeWebElement());
+                return 0;
+            });
+        }
 
-        public void ClickLeftUp() => Execute(() =>
+        public void ClickLeftUp()
         {
-            new Actions((IWebDriver)GetRootSearchContext()).MoveToElement(FindNativeWebElement(), 0, 0)
-                .Click()
-                .Perform();
-            return 0;
-        });
+            Execute(() =>
+            {
+                new Actions((IWebDriver) GetRootSearchContext()).MoveToElement(FindNativeWebElement(), 0, 0)
+                    .Click()
+                    .Perform();
+                return 0;
+            });
+        }
 
-        public void Mouseover() => Execute(() =>
+        public void Mouseover()
         {
-            new Actions((IWebDriver)GetRootSearchContext()).MoveToElement(FindNativeWebElement()).Perform();
-            return 0;
-        });
+            Execute(() =>
+            {
+                new Actions((IWebDriver) GetRootSearchContext()).MoveToElement(FindNativeWebElement()).Perform();
+                return 0;
+            });
+        }
 
-        public void SendKeysToBody(string text) => GetRootSearchContext().FindElement(By.TagName("body"))
-            .SendKeys(text);
-
-        public void ScrollDown() => Execute(() =>
+        public void SendKeysToBody(string text)
         {
-            var element = FindNativeWebElement();
-            WebDriver.ExecuteScript("arguments[0].scrollIntoView();", element);
-            return 0;
-        });
+            GetRootSearchContext().FindElement(By.TagName("body"))
+                .SendKeys(text);
+        }
 
-        private static void BlurCurrentActiveElement() => WebDriver.ExecuteScript(
-            "if (document.activeElement != null) {document.activeElement.blur();}");
+        public void ScrollDown()
+        {
+            Execute(() =>
+            {
+                var element = FindNativeWebElement();
+                WebDriver.ExecuteScript("arguments[0].scrollIntoView();", element);
+                return 0;
+            });
+        }
 
-        private IWebElement FindNativeWebElement() => nativeWebElement ??
-                                                      (nativeWebElement = FindNativeWebElementInternal());
+        private static void BlurCurrentActiveElement()
+        {
+            WebDriver.ExecuteScript(
+                "if (document.activeElement != null) {document.activeElement.blur();}");
+        }
+
+        private IWebElement FindNativeWebElement()
+        {
+            return nativeWebElement ??
+                   (nativeWebElement = FindNativeWebElementInternal());
+        }
 
         private IWebElement FindNativeWebElementInternal()
         {
@@ -187,7 +252,6 @@ namespace WebdriverTestProject.Controls
         private T Execute<T>(Func<T> func)
         {
             for (var index = 5; index >= 0; --index)
-            {
                 try
                 {
                     return func();
@@ -211,7 +275,7 @@ namespace WebdriverTestProject.Controls
                         throw;
                     TryFixPage();
                 }
-            }
+
             return func();
         }
 
@@ -221,6 +285,9 @@ namespace WebdriverTestProject.Controls
             BlurCurrentActiveElement();
         }
 
-        private void ClearCache() => nativeWebElement = null;
+        private void ClearCache()
+        {
+            nativeWebElement = null;
+        }
     }
 }
