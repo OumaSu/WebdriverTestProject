@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
+using WebdriverTestProject.Helpers;
 
 namespace WebdriverTestProject
 {
@@ -9,6 +10,7 @@ namespace WebdriverTestProject
         [SetUp]
         public void SetUp()
         {
+            JsLogger.Reset();
         }
 
         [TearDown]
