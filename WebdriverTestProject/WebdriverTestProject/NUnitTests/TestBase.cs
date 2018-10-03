@@ -9,7 +9,7 @@ namespace WebdriverTestProject.NUnitTests
     public class TestBase
     {
         [SetUp]
-        public void SetUp()
+        public virtual void SetUp()
         {
             JsLogger.Reset();
             WebDriver.MaximizeWindow();
@@ -34,18 +34,5 @@ namespace WebdriverTestProject.NUnitTests
                 WebDriver.Quit();
             }
         }
-
-        [Test]
-        public void TestYandex()
-        {
-            WebDriver.Driver.Navigate().GoToUrl("https://www.yandex.ru/");
-        }
-
-        [Test]
-        public void TestMail()
-        {
-            WebDriver.Driver.Navigate().GoToUrl("https://www.yandex.ru/");
-        }
-
     }
 }

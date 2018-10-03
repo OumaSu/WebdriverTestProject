@@ -55,9 +55,12 @@
     <Compile Include="Controls\HtmlControl.cs" />
     <Compile Include="Controls\StaticControl.cs" />
     <Compile Include="Controls\WebElementWrapper.cs" />
+    <Compile Include="Controls\Yandexs\MoreControl.cs" />
     <Compile Include="Helpers\ConsoleOutput.cs" />
     <Compile Include="Helpers\JsLogger.cs" />
     <Compile Include="Helpers\Waiter.cs" />
+    <Compile Include="NUnitTests\YandexTests.cs" />
+    <Compile Include="Pages\Yandexs\MainPage.cs" />
     <Compile Include="WebDriverCore\WebDriver.cs" />
     <Compile Include="Pages\PageBase.cs" />
     <Compile Include="NUnitTests\TestBase.cs" />
@@ -68,9 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controls\Mails\" />
-    <Folder Include="Controls\Yandexs\" />
     <Folder Include="Pages\Mails\" />
-    <Folder Include="Pages\Yandexs\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
