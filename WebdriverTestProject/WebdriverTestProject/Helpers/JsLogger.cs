@@ -24,6 +24,16 @@ namespace WebdriverTestProject.Helpers
             Reset();
         }
 
+        public static void CaptureJavascriptErrors()
+        {
+            var str =
+                WebDriver.ExecuteScript("return window.jsErrors") as string;
+            if (string.IsNullOrEmpty(str))
+                return;
+            Console.WriteLine("Javascript errors:\n" + str);
+        }
+
+
         private static string Read()
         {
             return WebDriver.ExecuteScript("return Logger.read() in browser {0}", "ChromeBrowser", new object[0]) as string;

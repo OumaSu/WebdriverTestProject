@@ -11,6 +11,7 @@ namespace WebdriverTestProject
         public void SetUp()
         {
             JsLogger.Reset();
+            WebDriver.MaximizeWindow();
         }
 
         [TearDown]
@@ -21,6 +22,11 @@ namespace WebdriverTestProject
             {
                 ((IJavaScriptExecutor) WebDriver.Driver).ExecuteScript(
                     "tb:test-result=" + (passed ? "passed" : "failed"));
+                //if (!passed) пока уберу, нужно подумать над необходимостью
+                //{
+                //    JsLogger.CaptureJavascriptErrors();
+                //    JsLogger.Show();
+                //}
             }
             finally
             {
@@ -29,11 +35,16 @@ namespace WebdriverTestProject
         }
 
         [Test]
-        public void FirstTest()
+        public void TestYandex()
         {
-            WebDriver.Driver.Navigate().GoToUrl("https://www.google.com/");
-
-            Assert.AreEqual("SW Test Academy - Software Test Academy", WebDriver.Driver.Title);
+            WebDriver.Driver.Navigate().GoToUrl("https://www.yandex.ru/");
         }
+
+        [Test]
+        public void TestMail()
+        {
+            WebDriver.Driver.Navigate().GoToUrl("https://www.yandex.ru/");
+        }
+
     }
 }
