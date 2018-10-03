@@ -2,7 +2,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
-namespace WebdriverTestProject
+namespace WebdriverTestProject.WebDriverCore
 {
     public static class WebDriver
     {

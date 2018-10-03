@@ -5,6 +5,7 @@ using System.Threading;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using WebdriverTestProject.Helpers;
+using WebdriverTestProject.WebDriverCore;
 
 namespace WebdriverTestProject.Controls
 {

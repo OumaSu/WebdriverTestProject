@@ -2,10 +2,11 @@
 using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 using WebdriverTestProject.Helpers;
+using WebdriverTestProject.WebDriverCore;
 
-namespace WebdriverTestProject
+namespace WebdriverTestProject.NUnitTests
 {
-    public class Tests
+    public class TestBase
     {
         [SetUp]
         public void SetUp()

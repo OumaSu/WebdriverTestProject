@@ -58,9 +58,9 @@
     <Compile Include="Helpers\ConsoleOutput.cs" />
     <Compile Include="Helpers\JsLogger.cs" />
     <Compile Include="Helpers\Waiter.cs" />
-    <Compile Include="WebDriver.cs" />
+    <Compile Include="WebDriverCore\WebDriver.cs" />
     <Compile Include="Pages\PageBase.cs" />
-    <Compile Include="Tests.cs" />
+    <Compile Include="NUnitTests\TestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
