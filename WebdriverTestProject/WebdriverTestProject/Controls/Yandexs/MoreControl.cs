@@ -11,5 +11,7 @@ namespace WebdriverTestProject.Controls.Yandexs
         public MoreControl(string idLocator, HtmlControl container = null) : base(idLocator, container)
         {
         }
+        public StaticControl Schedule => new StaticControl(By.XPath("//*[@data-id='rasp']"));//data-id="rasp"
+
     }
 }

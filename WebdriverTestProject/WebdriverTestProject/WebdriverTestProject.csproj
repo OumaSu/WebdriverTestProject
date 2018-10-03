@@ -55,12 +55,14 @@
     <Compile Include="Controls\HtmlControl.cs" />
     <Compile Include="Controls\StaticControl.cs" />
     <Compile Include="Controls\WebElementWrapper.cs" />
+    <Compile Include="Controls\Yandexs\Input.cs" />
     <Compile Include="Controls\Yandexs\MoreControl.cs" />
-    <Compile Include="Helpers\ConsoleOutput.cs" />
     <Compile Include="Helpers\JsLogger.cs" />
+    <Compile Include="Helpers\NextDayOfWeek.cs" />
     <Compile Include="Helpers\Waiter.cs" />
     <Compile Include="NUnitTests\YandexTests.cs" />
     <Compile Include="Pages\Yandexs\MainPage.cs" />
+    <Compile Include="Pages\Yandexs\SchedulePage.cs" />
     <Compile Include="WebDriverCore\WebDriver.cs" />
     <Compile Include="Pages\PageBase.cs" />
     <Compile Include="NUnitTests\TestBase.cs" />
