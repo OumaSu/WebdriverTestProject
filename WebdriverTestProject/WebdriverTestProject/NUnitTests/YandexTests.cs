@@ -35,8 +35,6 @@ namespace WebdriverTestProject.NUnitTests
             //который отправляется не ранее 12:00
             //
             //и билет на который стоит не более 200 р.
-
-
             var target = resultPage.ResultRows.Where(i => i.Price <= 200 && i.Departure.Hour < 12)
                 .OrderBy(i => i.Position).FirstOrDefault();
             if (target != null)
@@ -51,6 +49,17 @@ namespace WebdriverTestProject.NUnitTests
             {
                 Console.WriteLine($"Output no result");
             }
+            ////Открыть страницу информации о рейсе.
+
+            //8.Проверить, что данные о рейсе на странице информации соответствуют данным из пункта 5, а именно:
+
+            //*Название таблицы
+
+            //    * Время и пункт отправления
+
+            //    * Время и пункт прибытия
+
+            //    * Время в пути
         }
     }
 }

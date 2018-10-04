@@ -6,9 +6,8 @@ namespace WebdriverTestProject.Pages
 {
     public abstract class PageBase
     {
-        public readonly int defaultTimeout = 5000;
-
         private readonly object alive = new object();
+        public readonly int defaultTimeout = 5000;
 
 
         public static TimeSpan WaitPageLoadTimeout => TimeSpan.FromSeconds(60.0);

@@ -17,16 +17,11 @@ namespace WebdriverTestProject.Pages.Yandexs
         }
 
         public StaticControl Title => new StaticControl(By.XPath("//header/span[1]/h1/span"));
-
-        public StaticControl FirstResult => new StaticControl(By.XPath(
-            "//*[@class='earchSegment SearchSegment_isNotInterval SearchSegment_isNotGone SearchSegment_isVisible']"));
-
-        private StaticControl currencyControlContainer => new StaticControl(By.XPath("//*[@class='SearchToolbar']"));
-
         public StaticControl CurrencyControlButton =>
             new StaticControl(By.XPath("//*[@id='root']/div/main/div/div[1]/div[1]/div/ul/li[3]/div/button"));
-        public StaticControl CurrencyRubControl => new StaticControl(By.XPath("//*[@value='RUB']"));
-        public StaticControl CurrencyUsdControl => new StaticControl(By.XPath("//*[@value='USD']"));
+
+        public StaticControl CurrencyRubControl => new StaticControl(By.XPath("//*[@data-value='RUB']"));
+        public StaticControl CurrencyUsdControl => new StaticControl(By.XPath("//*[@data-value='USD']"));
 
         public IEnumerable<ResultRow> ResultRows => GetRows();
 
@@ -73,6 +68,12 @@ namespace WebdriverTestProject.Pages.Yandexs
         {
             for (var i = 1; i <= ResultCount(); i++)
                 yield return new ResultRow(i);
+        }
+
+        public RacePage LinkToRace(ResultRow resultRow)
+        {
+            resultRow.Link.Click();
+            return ChangePageType<RacePage>();
         }
 
         public override void BrowseWaitVisible()

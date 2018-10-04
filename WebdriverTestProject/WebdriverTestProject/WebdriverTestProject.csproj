@@ -63,6 +63,7 @@
     <Compile Include="Helpers\Waiter.cs" />
     <Compile Include="NUnitTests\YandexTests.cs" />
     <Compile Include="Pages\Yandexs\MainPage.cs" />
+    <Compile Include="Pages\Yandexs\RacePage.cs" />
     <Compile Include="Pages\Yandexs\SchedulePage.cs" />
     <Compile Include="Pages\Yandexs\ScheduleResultPage.cs" />
     <Compile Include="WebDriverCore\WebDriver.cs" />
