@@ -2,6 +2,7 @@
 using System.Linq;
 using NUnit.Framework;
 using WebdriverTestProject.Helpers;
+using WebdriverTestProject.NUnitTests.YandexTestCases;
 using WebdriverTestProject.Pages.Yandexs;
 using WebdriverTestProject.WebDriverCore;
 
@@ -20,12 +21,10 @@ namespace WebdriverTestProject.NUnitTests
 
         [Test]
         [Description("Тест на поиск поездки")]
-        public void TestYandex()
+        [TestCaseSource(typeof(Cases), nameof(Cases.ekbKameskCase))]
+
+        public void TestYandex(string from, string to, string resultHeader)
         {
-            const string from = "Екатеринбург";
-            const string to = "Каменск-Уральский";
-            const string resultHeader =
-                "Расписание транспорта и билеты на поезд, электричку и автобус из Екатеринбурга в Каменск-Уральский";
             var targetDate = DateTime.Today.GetNextDayOfWeek(DayOfWeek.Saturday);
             mainPage.BrowseWaitVisible();
             var schedulePage = mainPage.GoToSchedule();

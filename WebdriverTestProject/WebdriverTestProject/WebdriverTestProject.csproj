@@ -61,6 +61,7 @@
     <Compile Include="Helpers\JsLogger.cs" />
     <Compile Include="Helpers\NextDayOfWeek.cs" />
     <Compile Include="Helpers\Waiter.cs" />
+    <Compile Include="NUnitTests\YandexTestCases\Cases.cs" />
     <Compile Include="NUnitTests\YandexTests.cs" />
     <Compile Include="Pages\Yandexs\MainPage.cs" />
     <Compile Include="Pages\Yandexs\RacePage.cs" />
