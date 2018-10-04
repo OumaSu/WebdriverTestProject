@@ -72,7 +72,19 @@ namespace WebdriverTestProject.Pages.Yandexs
 
         public RacePage LinkToRace(ResultRow resultRow)
         {
-            resultRow.Link.Click();
+            try
+            {
+                if (!resultRow.Link.IsPresent)
+                {
+                    return null;
+                }
+                resultRow.Link.Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ошибка в процессе клика по ссылке: {ex.Message}");
+                return null;
+            }
             return ChangePageType<RacePage>();
         }
 

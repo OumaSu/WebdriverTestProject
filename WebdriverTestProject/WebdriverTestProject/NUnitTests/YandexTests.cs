@@ -19,6 +19,7 @@ namespace WebdriverTestProject.NUnitTests
         }
 
         [Test]
+        [Description("Тест на поиск поездки")]
         public void TestYandex()
         {
             const string from = "Екатеринбург";
@@ -30,11 +31,6 @@ namespace WebdriverTestProject.NUnitTests
             var schedulePage = mainPage.GoToSchedule();
             var resultPage = schedulePage.SearchTicket(from, to, targetDate);
             resultPage.WaitTitle(resultHeader);
-            //Сохранить данные о самом раннем рейсе,
-            //
-            //который отправляется не ранее 12:00
-            //
-            //и билет на который стоит не более 200 р.
             var target = resultPage.ResultRows.Where(i => i.Price <= 200 && i.Departure.Hour < 12)
                 .OrderBy(i => i.Position).FirstOrDefault();
             if (target != null)
@@ -49,16 +45,13 @@ namespace WebdriverTestProject.NUnitTests
             {
                 Console.WriteLine($"Output no result");
             }
-            ////Открыть страницу информации о рейсе.
 
+            var racePage = resultPage.LinkToRace(target);
+            ////Открыть страницу информации о рейсе. - Не понял, где именно переход на страницу с информацией о рейсе
             //8.Проверить, что данные о рейсе на странице информации соответствуют данным из пункта 5, а именно:
-
             //*Название таблицы
-
             //    * Время и пункт отправления
-
             //    * Время и пункт прибытия
-
             //    * Время в пути
         }
     }
