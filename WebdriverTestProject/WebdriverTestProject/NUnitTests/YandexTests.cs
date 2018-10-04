@@ -25,29 +25,6 @@ namespace WebdriverTestProject.NUnitTests
             var targetDate = DateTime.Today.GetNextDayOfWeek(DayOfWeek.Saturday);
             mainPage.BrowseWaitVisible();
             var schedulePage = mainPage.GoToSchedule();
-            Console.WriteLine(from);
-            Console.WriteLine(from);
-            Console.WriteLine(from);
-            Console.WriteLine(from);
-            Console.WriteLine(from);
-            Console.WriteLine(from);
-            Console.WriteLine(from);
-            Console.WriteLine(from);
-            Console.WriteLine(from);
-            Console.WriteLine(from);
-            Console.WriteLine(from);
-            Console.WriteLine(from);
-            Console.WriteLine(from);
-            Console.WriteLine(from);
-            Console.WriteLine(from);
-            Console.WriteLine(from);
-            Console.WriteLine(from);
-            Console.WriteLine(from);
-            Console.WriteLine(from);
-            Console.WriteLine(from);
-            Console.WriteLine(from);
-            Console.WriteLine(from);
-            Console.WriteLine(from);
             schedulePage.SearchTicket(from, to, targetDate);
         }
     }
